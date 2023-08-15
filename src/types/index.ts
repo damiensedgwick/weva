@@ -1,3 +1,7 @@
+interface CitySearchProps {
+  setCity: (city: string) => void;
+}
+
 interface WeatherWidgetProps {
   city: string;
 }
@@ -59,4 +63,5 @@ interface Wind {
 export type {
   WeatherWidgetProps,
   CityWeatherResponse,
+  CitySearchProps
 }
