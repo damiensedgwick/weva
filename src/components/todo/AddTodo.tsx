@@ -1,7 +1,13 @@
 import { useState } from "react";
 import styles from "./AddTodo.module.css";
 
-export const AddTodo = () => {
+interface Props {
+  setTodos: (
+    todos: { id: number; title: string; completed: boolean }[]
+  ) => void;
+}
+
+export const AddTodo = ({ setTodos }: Props) => {
   const [todo, setTodo] = useState("");
 
   const handleAddTodo = () => {
@@ -20,6 +26,7 @@ export const AddTodo = () => {
       const updatedTodos = [...parsedTodos, newTodo];
 
       ls.setItem("WEVA_TODOS", JSON.stringify(updatedTodos));
+      setTodos(updatedTodos);
     } else {
       const newTodo = {
         id: 1,
@@ -28,6 +35,7 @@ export const AddTodo = () => {
       };
 
       ls.setItem("WEVA_TODOS", JSON.stringify([newTodo]));
+      setTodos([newTodo]);
     }
   };
 

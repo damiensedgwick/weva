@@ -54,7 +54,7 @@ export const Todos = ({ username }: Props) => {
       ls.setItem("WEVA_TODOS", JSON.stringify(data));
       setTodos(data);
     }
-  }, []);
+  }, [todos]);
 
   const handleUpdateTodo = (id: number) => {
     const updatedTodos = todos.map((todo) => {

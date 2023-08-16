@@ -7,9 +7,12 @@ interface Props {
   show: boolean;
   setShow: (show: boolean) => void;
   city: string;
+  setTodos: (
+    todos: { id: number; title: string; completed: boolean }[]
+  ) => void;
 }
 
-export const Draw = ({ show, setShow, city }: Props) => {
+export const Draw = ({ show, setShow, city, setTodos }: Props) => {
   const transitions = useTransition(show, {
     from: { transform: "translateX(100%)" },
     enter: { transform: "translateX(0)" },
@@ -27,7 +30,7 @@ export const Draw = ({ show, setShow, city }: Props) => {
           >
             <XMark />
           </button>
-          <AddTodo />
+          <AddTodo setTodos={setTodos} />
           <Weather location={city} />
           <Schedule />
         </animated.div>
