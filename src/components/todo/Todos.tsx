@@ -24,7 +24,7 @@ const data = [
   {
     id: 4,
     title: "Grab groceries for the weekend",
-    completed: true,
+    completed: false,
     date: new Date()
   },
   {
