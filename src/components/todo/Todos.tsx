@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Cog } from "../../icons/Cog";
+import { Cog, Trash } from "icons";
 import styles from "./Todos.module.css";
-import { Trash } from "../../icons/Trash";
 
 const data = [
   {

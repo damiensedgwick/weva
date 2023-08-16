@@ -1,9 +1,7 @@
 import { useTransition, animated } from "@react-spring/web";
-import { Weather } from "../weather/Weather";
+import { AddTodo, Weather, Schedule } from "components";
+import { XMark } from "icons";
 import styles from "./Draw.module.css";
-import { XMark } from "../../icons";
-import { Schedule } from "../schedule/Schedule";
-import { AddTodo } from "../todo/AddTodo";
 
 interface Props {
   show: boolean;

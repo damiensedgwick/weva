@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { Draw } from "./components/drawer/Draw";
-import { Bars } from "./icons";
+import { Draw, Wizard, Todos } from "components";
+import { Bars } from "icons";
 import styles from "./App.module.css";
-import { Wizard } from "./components/wizard/Wizard";
-import { Todos } from "./components/todo/Todos";
 
 export const App = () => {
   const [showDraw, setShowDraw] = useState(false);

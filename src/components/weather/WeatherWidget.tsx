@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDebounce } from "../../hooks/useDebounce";
+import { useDebounce } from "hooks/useDebounce";
 import { CityWeatherResponse } from "./types";
 import styles from "./WeatherWidget.module.css";
 
