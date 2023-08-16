@@ -1,28 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Draw } from "./components/drawer/Draw";
 import { Bars } from "./icons";
 import styles from "./App.module.css";
+import { Wizard } from "./components/wizard/Wizard";
 
 export const App = () => {
-  const [show, setShow] = useState(false);
+  const [showDraw, setShowDraw] = useState(false);
+
+  const [settings, setSettings] = useState({
+    name: "",
+    city: "",
+    completedSetupWizard: false
+  });
+
+  useEffect(() => {
+    const ls = window.localStorage;
+    const settings = ls.getItem("WEVA_SETTINGS");
+
+    if (settings) {
+      setSettings(JSON.parse(settings));
+    }
+  }, []);
 
   return (
     <div className={styles.app}>
-      {!show && (
+      {settings.completedSetupWizard && (
         <button
           type="button"
-          onClick={() => setShow((prevState) => !prevState)}
+          onClick={() => setShowDraw((prevState) => !prevState)}
           className={styles.button}
         >
           <Bars />
         </button>
       )}
 
-      <div>
-        <h1>App</h1>
-      </div>
+      {!settings.completedSetupWizard && <Wizard setSettings={setSettings} />}
 
-      <Draw show={show} setShow={setShow} />
+      <Draw show={showDraw} setShow={setShowDraw} />
     </div>
   );
 };
