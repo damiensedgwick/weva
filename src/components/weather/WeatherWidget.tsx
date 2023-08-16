@@ -1,44 +1,50 @@
 import { useState, useEffect } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
-import { WeatherWidgetProps, CityWeatherResponse } from "../../types";
+import { CityWeatherResponse } from "./types";
+import styles from "./WeatherWidget.module.css";
 
-export const WeatherWidget = ({ city }: WeatherWidgetProps) => {
+interface Props {
+  city: string;
+}
+
+export const WeatherWidget = ({ city }: Props) => {
   const [weather, setWeather] = useState<CityWeatherResponse | null>(null);
   const debouncedValue = useDebounce<string>(city, 750);
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${debouncedValue}&APPID=${
-        import.meta.env.VITE_OPEN_WEATHER_API_KEY
-      }`
+      `https://api.openweathermap.org/data/2.5/weather?q=${
+        debouncedValue ? debouncedValue : "Norwich"
+      }&APPID=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`
     )
       .then((res) => res.json())
       .then((data) => (data.cod === 200 ? setWeather(data) : setWeather(null)));
   }, [debouncedValue]);
 
-  return (
-    <div>
-      {!weather && (
-        <div>
-          <p>Please enter a city</p>
-        </div>
-      )}
+  if (!weather) {
+    return (
+      <div className={styles.widget}>
+        <p className={styles.warning}>City weather not found</p>
+      </div>
+    );
+  }
 
-      {weather && (
+  return (
+    <div className={styles.widget}>
+      <div className={styles.weather}>
         <div>
-          <div>
-            <p>{weather.name}</p>
-            <p>{weather.weather[0].description}</p>
-            <p>{Math.round(weather.main.temp - 273.15)}°C</p>
-          </div>
-          <div>
-            <img
-              src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
-              alt="weather icon"
-            />
-          </div>
+          <p className={styles.city}>{weather.name}</p>
+          <p className={styles.description}>{weather.weather[0].description}</p>
         </div>
-      )}
+        <p className={styles.temp}>
+          {Math.round(weather.main.temp - 273.15)}°C
+        </p>
+      </div>
+      <img
+        className={styles.icon}
+        src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+        alt="weather icon"
+      />
     </div>
   );
 };

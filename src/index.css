@@ -9,3 +9,9 @@
     margin: var(--default-margin);
     box-sizing: var(--default-box-sizing);
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+}
