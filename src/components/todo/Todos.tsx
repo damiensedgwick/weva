@@ -1,43 +1,38 @@
 import { useEffect, useState } from "react";
 import { Cog } from "../../icons/Cog";
 import styles from "./Todos.module.css";
+import { Trash } from "../../icons/Trash";
 
 const data = [
   {
     id: 1,
     title: "Take out the trash",
-    completed: false,
-    date: new Date()
+    completed: false
   },
   {
     id: 2,
     title: "Finish my side project",
-    completed: false,
-    date: new Date()
+    completed: false
   },
   {
     id: 3,
     title: "Go to the dentist",
-    completed: false,
-    date: new Date()
+    completed: false
   },
   {
     id: 4,
     title: "Grab groceries for the weekend",
-    completed: false,
-    date: new Date()
+    completed: false
   },
   {
     id: 5,
     title: "Walk the dog",
-    completed: false,
-    date: new Date()
+    completed: false
   },
   {
     id: 6,
     title: "Clean the car",
-    completed: false,
-    date: new Date()
+    completed: false
   }
 ];
 
@@ -47,7 +42,7 @@ interface Props {
 
 export const Todos = ({ username }: Props) => {
   const [todos, setTodos] = useState<
-    { id: number; title: string; completed: boolean; date: Date }[]
+    { id: number; title: string; completed: boolean }[]
   >([]);
 
   useEffect(() => {
@@ -80,6 +75,15 @@ export const Todos = ({ username }: Props) => {
     setTodos(updatedTodos);
   };
 
+  const handleDeleteTodo = (id: number) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+
+    const ls = window.localStorage;
+
+    ls.setItem("WEVA_TODOS", JSON.stringify(updatedTodos));
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className={styles.wrapper}>
       <button className={styles.settings}>
@@ -94,10 +98,20 @@ export const Todos = ({ username }: Props) => {
             .map((todo) => (
               <li key={todo.id} className={styles.todo}>
                 <p>{todo.title}</p>
-                <input
-                  type="checkbox"
-                  onChange={() => handleUpdateTodo(todo.id)}
-                />
+                <div className={styles.actions}>
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => handleUpdateTodo(todo.id)}
+                  />
+                  <button
+                    className={styles.button}
+                    type="button"
+                    onClick={() => handleDeleteTodo(todo.id)}
+                  >
+                    <Trash />
+                  </button>
+                </div>
               </li>
             ))}
         </ul>
@@ -107,11 +121,20 @@ export const Todos = ({ username }: Props) => {
             .map((todo) => (
               <li key={todo.id} className={styles.todo}>
                 <p>{todo.title}</p>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => handleUpdateTodo(todo.id)}
-                />
+                <div className={styles.actions}>
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => handleUpdateTodo(todo.id)}
+                  />
+                  <button
+                    className={styles.button}
+                    type="button"
+                    onClick={() => handleDeleteTodo(todo.id)}
+                  >
+                    <Trash />
+                  </button>
+                </div>
               </li>
             ))}
         </ul>

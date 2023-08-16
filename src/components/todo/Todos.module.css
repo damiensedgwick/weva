@@ -52,6 +52,7 @@
     width: 300px;
     padding: 10px;
     list-style: none;
+    text-decoration: line-through;
 }
 
 .todo {
@@ -67,4 +68,24 @@
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.actions {
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    color: red;
+    stroke-width: 2px;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
