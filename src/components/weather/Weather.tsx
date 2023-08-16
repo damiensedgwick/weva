@@ -3,8 +3,12 @@ import { CitySearch } from "./CitySearch";
 import { WeatherWidget } from "./WeatherWidget";
 import styles from "./Weather.module.css";
 
-export const Weather = () => {
-  const [city, setCity] = useState("Norwich");
+interface Props {
+  location: string;
+}
+
+export const Weather = ({ location }: Props) => {
+  const [city, setCity] = useState(location);
 
   return (
     <div className={styles.weather}>

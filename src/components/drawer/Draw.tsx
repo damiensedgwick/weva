@@ -7,9 +7,10 @@ import { Schedule } from "../schedule/Schedule";
 interface Props {
   show: boolean;
   setShow: (show: boolean) => void;
+  city: string;
 }
 
-export const Draw = ({ show, setShow }: Props) => {
+export const Draw = ({ show, setShow, city }: Props) => {
   const transitions = useTransition(show, {
     from: { transform: "translateX(100%)" },
     enter: { transform: "translateX(0)" },
@@ -27,7 +28,7 @@ export const Draw = ({ show, setShow }: Props) => {
           >
             <XMark />
           </button>
-          <Weather />
+          <Weather location={city} />
           <Schedule />
         </animated.div>
       )

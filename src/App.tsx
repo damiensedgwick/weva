@@ -34,9 +34,13 @@ export const App = () => {
         </button>
       )}
 
-      {!settings.completedSetupWizard && <Wizard setSettings={setSettings} />}
+      {!settings.completedSetupWizard ? (
+        <Wizard setSettings={setSettings} />
+      ) : (
+        <p>Welcome To WEVA</p>
+      )}
 
-      <Draw show={showDraw} setShow={setShowDraw} />
+      <Draw show={showDraw} setShow={setShowDraw} city={settings.city} />
     </div>
   );
 };
