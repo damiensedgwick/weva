@@ -4,7 +4,7 @@ import { Bars } from "./icons";
 import styles from "./App.module.css";
 
 export const App = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   return (
     <div className={styles.app}>

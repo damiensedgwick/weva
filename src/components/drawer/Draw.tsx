@@ -2,6 +2,7 @@ import { useTransition, animated } from "@react-spring/web";
 import { Weather } from "../weather/Weather";
 import styles from "./Draw.module.css";
 import { XMark } from "../../icons";
+import { Schedule } from "../schedule/Schedule";
 
 interface Props {
   show: boolean;
@@ -27,6 +28,7 @@ export const Draw = ({ show, setShow }: Props) => {
             <XMark />
           </button>
           <Weather />
+          <Schedule />
         </animated.div>
       )
   );

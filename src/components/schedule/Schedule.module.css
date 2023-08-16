@@ -1,4 +1,4 @@
-.weather {
+.schedule {
     padding: 20px;
     margin-bottom: 20px;
     width: 100%;
@@ -8,5 +8,5 @@
     justify-content: center;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     border-radius: 10px;
-    background: linear-gradient(to bottom, #2f80ed, #56ccf2);
+    background: linear-gradient(to bottom, #ff416c, #ff4b2b);
 }
