@@ -1,9 +1,9 @@
-import { Weather } from "./components/Weather"
+import { Draw } from "./components/drawer/Draw";
 
 export const App = () => {
   return (
-    <div className="content-wrapper">
-      <Weather />
+    <div>
+      <Draw />
     </div>
-  )
-}
+  );
+};

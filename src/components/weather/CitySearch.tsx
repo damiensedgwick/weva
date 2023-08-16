@@ -1,13 +1,13 @@
-import { CitySearchProps } from "../types"
+import { CitySearchProps } from "../../types";
 
 export const CitySearch = ({ setCity }: CitySearchProps) => {
   return (
-    <div className="city-search">
+    <div>
       <input
         type="text"
         placeholder="Enter city name"
         onChange={(e) => setCity(e.target.value)}
       />
     </div>
-  )
-}
+  );
+};
