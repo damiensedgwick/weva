@@ -18,7 +18,7 @@ export const App = () => {
         </button>
       )}
 
-      <Draw show={show} />
+      <Draw show={show} setShow={setShow} />
     </div>
   );
 };

@@ -1,12 +1,14 @@
 import { useTransition, animated } from "@react-spring/web";
 import { Weather } from "../weather/Weather";
 import styles from "./Draw.module.css";
+import { XMark } from "../../icons";
 
 interface Props {
   show: boolean;
+  setShow: (show: boolean) => void;
 }
 
-export const Draw = ({ show }: Props) => {
+export const Draw = ({ show, setShow }: Props) => {
   const transitions = useTransition(show, {
     from: { transform: "translateX(100%)" },
     enter: { transform: "translateX(0)" },
@@ -17,6 +19,13 @@ export const Draw = ({ show }: Props) => {
     (props, item) =>
       item && (
         <animated.div className={styles.drawer} style={props}>
+          <button
+            type="button"
+            onClick={() => setShow(false)}
+            className={styles.button}
+          >
+            <XMark />
+          </button>
           <Weather />
         </animated.div>
       )
