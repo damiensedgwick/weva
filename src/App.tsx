@@ -18,6 +18,10 @@ export const App = () => {
         </button>
       )}
 
+      <div>
+        <h1>App</h1>
+      </div>
+
       <Draw show={show} setShow={setShow} />
     </div>
   );
