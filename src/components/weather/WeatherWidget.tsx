@@ -32,13 +32,15 @@ export const WeatherWidget = ({ city }: Props) => {
   return (
     <div className={styles.widget}>
       <div className={styles.weather}>
-        <div>
-          <p className={styles.city}>{weather.name}</p>
-          <p className={styles.description}>{weather.weather[0].description}</p>
-        </div>
         <p className={styles.temp}>
           {Math.round(weather.main.temp - 273.15)}°C
         </p>
+        <div>
+          <p className={styles.city}>{weather.name}</p>
+          <p className={styles.description}>
+            <small>{weather.weather[0].description}</small>
+          </p>
+        </div>
       </div>
       <img
         className={styles.icon}

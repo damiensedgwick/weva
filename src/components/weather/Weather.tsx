@@ -8,8 +8,8 @@ export const Weather = () => {
 
   return (
     <div className={styles.weather}>
-      <CitySearch setCity={setCity} />
       <WeatherWidget city={city} />
+      <CitySearch setCity={setCity} />
     </div>
   );
 };
