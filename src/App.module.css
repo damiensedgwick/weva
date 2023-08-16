@@ -2,7 +2,7 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: url("/public/bg.jpeg");
+    background: url("/bg.jpeg");
 }
 
 .button {
