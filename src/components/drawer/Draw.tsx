@@ -3,6 +3,7 @@ import { Weather } from "../weather/Weather";
 import styles from "./Draw.module.css";
 import { XMark } from "../../icons";
 import { Schedule } from "../schedule/Schedule";
+import { AddTodo } from "../todo/AddTodo";
 
 interface Props {
   show: boolean;
@@ -28,6 +29,7 @@ export const Draw = ({ show, setShow, city }: Props) => {
           >
             <XMark />
           </button>
+          <AddTodo />
           <Weather location={city} />
           <Schedule />
         </animated.div>
