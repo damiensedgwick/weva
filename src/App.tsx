@@ -3,10 +3,10 @@ import { Draw } from "./components/drawer/Draw";
 import { Bars } from "./icons";
 import styles from "./App.module.css";
 import { Wizard } from "./components/wizard/Wizard";
+import { Todos } from "./components/todo/Todos";
 
 export const App = () => {
   const [showDraw, setShowDraw] = useState(false);
-
   const [settings, setSettings] = useState({
     name: "",
     city: "",
@@ -37,7 +37,7 @@ export const App = () => {
       {!settings.completedSetupWizard ? (
         <Wizard setSettings={setSettings} />
       ) : (
-        <p>Welcome To WEVA</p>
+        <Todos username={settings.name} />
       )}
 
       <Draw show={showDraw} setShow={setShowDraw} city={settings.city} />
