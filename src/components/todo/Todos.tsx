@@ -1,15 +1,21 @@
 import { Trash } from "icons";
-import { useTodos } from "hooks";
 
 import styles from "./Todos.module.css";
+import { Todo } from "hooks/useTodos";
 
 interface Props {
   username: string;
+  todos: Todo[];
+  handleUpdateTodo: (id: number) => void;
+  handleDeleteTodo: (id: number) => void;
 }
 
-export const Todos = ({ username }: Props) => {
-  const { todos, handleUpdateTodo, handleDeleteTodo } = useTodos();
-
+export const Todos = ({
+  username,
+  todos,
+  handleUpdateTodo,
+  handleDeleteTodo
+}: Props) => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Welcome {username}</h1>

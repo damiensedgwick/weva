@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { useTodos } from "hooks";
 
 import styles from "./AddTodo.module.css";
 
-export const AddTodo = () => {
+interface Props {
+  handleAddTodo: (todo: string) => void;
+}
+
+export const AddTodo = ({ handleAddTodo }: Props) => {
   const [todo, setTodo] = useState("");
-  const { handleAddTodo } = useTodos();
 
   return (
     <form

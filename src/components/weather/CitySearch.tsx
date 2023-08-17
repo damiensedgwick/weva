@@ -1,10 +1,10 @@
-import { useCity } from "hooks";
-
 import styles from "./CitySearch.module.css";
 
-export const CitySearch = () => {
-  const { setCity } = useCity();
+interface Props {
+  setCity: (city: string) => void;
+}
 
+export const CitySearch = ({ setCity }: Props) => {
   return (
     <div>
       <input

@@ -1,10 +1,12 @@
-import { useCity } from "hooks";
+import { CityWeatherResponse } from "./types";
 
 import styles from "./WeatherWidget.module.css";
 
-export const WeatherWidget = () => {
-  const { weather } = useCity();
+interface Props {
+  weather: CityWeatherResponse | null;
+}
 
+export const WeatherWidget = ({ weather }: Props) => {
   if (!weather) {
     return (
       <div className={styles.widget}>

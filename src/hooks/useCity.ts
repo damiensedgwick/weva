@@ -17,6 +17,8 @@ export const useCity = () => {
       .then((data) => (data.cod === 200 ? setWeather(data) : setWeather(null)));
   }, [debouncedValue]);
 
+  console.log("weather from hook: ", weather);
+
   return {
     city,
     setCity,
