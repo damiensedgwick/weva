@@ -1,4 +1,4 @@
-import { Cog, Trash } from "icons";
+import { Trash } from "icons";
 import { useTodos } from "hooks";
 
 import styles from "./Todos.module.css";
@@ -12,9 +12,6 @@ export const Todos = ({ username }: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <button className={styles.settings}>
-        <Cog />
-      </button>
       <h1 className={styles.title}>Welcome {username}</h1>
       <p className={styles.subtitle}>Here is a list of your todos</p>
       <div className={styles.todos}>
