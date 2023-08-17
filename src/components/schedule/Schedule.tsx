@@ -1,12 +1,13 @@
-import Calendar from "react-calendar";
+import { ReactNode } from "react";
+
 import "react-calendar/dist/Calendar.css";
 import "./calendar.css";
 import styles from "./Schedule.module.css";
 
-export const Schedule = () => {
-  return (
-    <div className={styles.schedule}>
-      <Calendar />
-    </div>
-  );
+interface Props {
+  children: ReactNode;
+}
+
+export const Schedule = ({ children }: Props) => {
+  return <div className={styles.schedule}>{children}</div>;
 };

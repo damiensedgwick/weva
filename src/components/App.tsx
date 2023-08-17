@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react";
-import { Draw, Wizard, Todos } from "components";
-import { Bars } from "icons";
+import { useState } from "react";
+import Calendar from "react-calendar";
+import { useSettings } from "hooks";
+import {
+  Draw,
+  Wizard,
+  Todos,
+  AddTodo,
+  Schedule,
+  Weather,
+  WeatherWidget,
+  CitySearch
+} from "components";
+import { Bars, XMark } from "icons";
+
 import styles from "./App.module.css";
 
 export const App = () => {
+  const { settings, setSettings } = useSettings();
   const [showDraw, setShowDraw] = useState(false);
-  const [settings, setSettings] = useState({
-    name: "",
-    city: "",
-    completedSetupWizard: false
-  });
-
-  useEffect(() => {
-    const ls = window.localStorage;
-    const settings = ls.getItem("WEVA_SETTINGS");
-
-    if (settings) {
-      setSettings(JSON.parse(settings));
-    }
-  }, []);
 
   return (
     <div className={styles.app}>
@@ -37,8 +36,26 @@ export const App = () => {
       ) : (
         <Todos username={settings.name} />
       )}
+      <Draw show={showDraw}>
+        <button
+          type="button"
+          onClick={() => setShowDraw(false)}
+          className={styles.button}
+        >
+          <XMark />
+        </button>
 
-      <Draw show={showDraw} setShow={setShowDraw} city={settings.city} />
+        <AddTodo />
+
+        <Weather>
+          <WeatherWidget />
+          <CitySearch />
+        </Weather>
+
+        <Schedule>
+          <Calendar />
+        </Schedule>
+      </Draw>
     </div>
   );
 };

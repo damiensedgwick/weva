@@ -1,19 +1,10 @@
-import { useState } from "react";
-import { CitySearch } from "./CitySearch";
-import { WeatherWidget } from "./WeatherWidget";
+import { ReactNode } from "react";
 import styles from "./Weather.module.css";
 
 interface Props {
-  location: string;
+  children: ReactNode;
 }
 
-export const Weather = ({ location }: Props) => {
-  const [city, setCity] = useState(location);
-
-  return (
-    <div className={styles.weather}>
-      <WeatherWidget city={city} />
-      <CitySearch setCity={setCity} />
-    </div>
-  );
+export const Weather = ({ children }: Props) => {
+  return <div className={styles.weather}>{children}</div>;
 };

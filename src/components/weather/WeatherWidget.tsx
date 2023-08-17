@@ -1,25 +1,9 @@
-import { useState, useEffect } from "react";
-import { useDebounce } from "hooks/useDebounce";
-import { CityWeatherResponse } from "./types";
+import { useCity } from "hooks";
+
 import styles from "./WeatherWidget.module.css";
 
-interface Props {
-  city: string;
-}
-
-export const WeatherWidget = ({ city }: Props) => {
-  const [weather, setWeather] = useState<CityWeatherResponse | null>(null);
-  const debouncedValue = useDebounce<string>(city, 750);
-
-  useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${
-        debouncedValue ? debouncedValue : "Norwich"
-      }&APPID=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => (data.cod === 200 ? setWeather(data) : setWeather(null)));
-  }, [debouncedValue]);
+export const WeatherWidget = () => {
+  const { weather } = useCity();
 
   if (!weather) {
     return (
