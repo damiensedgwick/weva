@@ -2,6 +2,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import { useSettings } from "hooks";
 import {
+  Button,
   Draw,
   Wizard,
   Todos,
@@ -22,13 +23,12 @@ export const App = () => {
   return (
     <div className={styles.app}>
       {settings.completedSetupWizard && (
-        <button
-          type="button"
+        <Button
+          className={styles.open}
           onClick={() => setShowDraw((prevState) => !prevState)}
-          className={styles.button}
         >
           <Bars />
-        </button>
+        </Button>
       )}
 
       {!settings.completedSetupWizard ? (
@@ -37,13 +37,12 @@ export const App = () => {
         <Todos username={settings.name} />
       )}
       <Draw show={showDraw}>
-        <button
-          type="button"
-          onClick={() => setShowDraw(false)}
-          className={styles.button}
+        <Button
+          className={styles.close}
+          onClick={() => setShowDraw((prevState) => !prevState)}
         >
           <XMark />
-        </button>
+        </Button>
 
         <AddTodo />
 

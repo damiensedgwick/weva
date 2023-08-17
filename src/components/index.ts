@@ -1,4 +1,5 @@
 import { App } from "./App";
+import { Button } from "./button/Button";
 import { Draw } from "./drawer/Draw";
 import { Schedule } from "./schedule/Schedule";
 import { AddTodo } from "./todo/AddTodo";
@@ -10,6 +11,7 @@ import { Wizard } from "./wizard/Wizard";
 
 export {
   App,
+  Button,
   Draw,
   Schedule,
   AddTodo,
