@@ -16,7 +16,9 @@ to other dates.
 # Enhancements
 
 [ ] - Being able to select a date and have the todos displayed for that date only.
+
 [ ] - Settings page to change username and city choice.
+
 [ ] - Additional widgets such as different timezones.
 
 **NB** Currently uses local storage for persisting data. This will be swapped out
