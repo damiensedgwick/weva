@@ -21,5 +21,7 @@ to other dates.
 
 [ ] - Additional widgets such as different timezones.
 
+# Notes
+
 **NB** Currently uses local storage for persisting data. This will be swapped out
 for a more suitable solution soon.
